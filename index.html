@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paintball Arena</title>
+
+    <!-- Include A-Frame and related scripts -->
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+
+    <!-- Include your custom JavaScript file -->
+    <script src="shoot.js"></script>
+</head>
+<body>
+    <!-- A-Frame Scene -->
+    <a-scene inspector-plugin-recast>
+        <!-- Camera Entity -->
+        <a-entity id="player" paintball-thrower movement-controls>
+            <a-camera></a-camera>
+        </a-entity>
+
+        <!-- Paintball Gun Entity -->
+        <a-entity id="paintballGun" paintball-shooter></a-entity>
+
+        <!-- Target Entity -->
+        <a-entity id="target"></a-entity>
+
+        <!-- Other A-Frame Entities and Components for the Paintball Arena -->
+        <!-- Example paint splash image entity -->
+        <a-image id="paint-splash" src="paint-splash.png" visible="false"></a-image>
+
+        <!-- Asset Management -->
+        <a-assets>
+            <!-- Load the Navmesh GLTF model -->
+            <a-asset-item id="navmesh" src="path/to/navmesh.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Navmesh Entity -->
+        <a-gltf-model src="#navmesh" navmesh></a-gltf-model>
+    </a-scene>
+</body>
+</html>
